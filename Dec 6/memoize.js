@@ -3,7 +3,7 @@ function expensiveOperation() {
   return 22;
 }
 
-// a simple memoized function to add something
+// a simple memoize function to add function
 const memoize = (func_name) => {
   let cache = {};
 	return () => {
