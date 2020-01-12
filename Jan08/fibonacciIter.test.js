@@ -2,14 +2,15 @@ const fibonacciIter = require('./fibonacciIter');
 
 describe('fibonacciIter', () => {
     test('should be an iterable', () => {
-      const iterator = fibonacciIter();
+      const iterator = fibonacciIter[Symbol.iterator]();
+      expect(typeof fibonacciIter[Symbol.iterator]).toBe('function');
       expect(typeof iterator.next).toBe('function');
       expect(iterator.next()).toHaveProperty('value');
       expect(iterator.next()).toHaveProperty('done');
     });
   
     test('should return fibonacciIter series', () => {
-      const iterator = fibonacciIter();
+      const iterator = fibonacciIter[Symbol.iterator]();
       expect(iterator.next().value).toBe(1);
       expect(iterator.next().value).toBe(2);
       expect(iterator.next().value).toBe(3);
