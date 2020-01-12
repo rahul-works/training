@@ -37,26 +37,29 @@ describe('Cycled', () => {
       expect(c.current()).toBe(3);
     });
   
-    // test('.reversed()', () => {
-    //   const c = new Cycled(fixture);
-    //   expect(c.reversed().next().value).toBe(3);
-    // });
+    test('.reversed()', () => {
+      const c = new Cycled(fixture);
+      expect(c.reversed().next()).toBe(2);
+    });
   
-    // test('.indexOf()', () => {
-    //   const c = new Cycled(fixture);
-    //   expect(c.indexOf(3)).toBe(2);
-    // });
+    test('.indexOf()', () => {
+      const fixture = [1, 2, 3];
+      const c = new Cycled(fixture);
+      expect(c.indexOf(3)).toBe(2);
+    });
   
-    // test('iterable', () => {
-    //   const c = new Cycled(fixture);
-    //   expect(c[Symbol.iterator]().next().value).toBe(1);
-    // });
+    test('iterable', () => {
+      const fixture = [1, 2, 3];
+      const c = new Cycled(fixture);
+      expect(c[Symbol.iterator]().next().value).toEqual(1);
+    });
   
-    // test('iterations on destructuring', () => {
-    //   const c = new Cycled(fixture);
-    //   expect([...c]).toEqual(fixture);
-    //   expect([...c]).toEqual(fixture);
-    //   c.next();
-    //   expect([...c]).toEqual([2, 3, 1]);
-    // });
+    test('iterations on destructuring', () => {
+      const fixture = [1, 2, 3];
+      const c = new Cycled(fixture);
+      expect([...c]).toEqual(fixture);
+      expect([...c]).toEqual(fixture);
+      c.next();
+      expect([...c]).toEqual([2, 3, 1]);
+    });
   });
